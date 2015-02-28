@@ -1,0 +1,19 @@
+K 13
+svn:externals
+V 292
+stdlib https://svn.win.tue.nl/repos/prom/Releases/Framework/lib
+src-test/test https://svn.win.tue.nl/repos/prom/Framework/trunk/src-Plugins/test
+.settings https://svn.win.tue.nl/repos/prom/Settings
+latestrelease https://svn.win.tue.nl/repos/prom/Releases/Packages/TraceAlignmentWithGuideTree
+
+K 10
+svn:ignore
+V 37
+bin
+dist
+bindist
+classes
+doc
+*.class
+
+END

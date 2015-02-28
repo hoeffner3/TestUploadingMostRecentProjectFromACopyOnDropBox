@@ -1,0 +1,319 @@
+package org.processmining.plugins.tracealignmentwithguidetree.datatypes;
+
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.processmining.plugins.tracealignmentwithguidetree.listeners.SequenceListener;
+
+public class Sequence {
+	String dash;
+	
+	// The trace name corresponding to this sequence
+	String name;
+	
+	// The aligned sequence with gaps
+	String[] sequenceWithGaps;
+	
+	// The aligned sequence without gaps
+	String[] sequenceWithoutGaps;
+	
+	// The indices in the aligned sequence where an activity is present
+	// TODO do we really need an int array or can we live with a boolean array
+	int[] activityIndexArray;
+	
+	/*
+	 * Need this mapping to display the activity details in the edit annotation
+	 * dialog box
+	 */
+	int[] alignmentIndex2ActivityIndex;
+	int[] activityIndex2AlignmentIndex;
+	
+	/*
+	 * There could be identical traces to this sequence in the event log (when
+	 * considering the activities as a char stream); Store the list of all
+	 * traces (by their names) that are identical to this trace
+	 */
+	List<String> duplicateTraceNameList;
+	
+	private int sortValue;
+	
+	Color sequenceNameColor;
+	
+	private final List<SequenceListener> listenersList = new ArrayList<SequenceListener>();
+	
+	protected Sequence() {
+	}
+	
+	public Sequence(String dash, String name, List<String> duplicateTraceNameList, String[] sequenceWithGaps) {
+		this.dash = dash;
+		this.name = name;
+		this.duplicateTraceNameList = new ArrayList<String>();
+		this.duplicateTraceNameList.addAll(duplicateTraceNameList);
+		this.sequenceWithGaps = sequenceWithGaps;
+
+		setSequenceWithoutGaps();
+	}
+	
+	protected void initialize(String name,  String[] sequence){
+		this.name = name;
+		setActivityInternal(sequence, null);
+	}
+	
+	private void setSequenceWithoutGaps() {
+		int alignedSequenceLength = sequenceWithGaps.length;
+
+		int gapCount = 0;
+		for (int i = 0; i < alignedSequenceLength; i++) {
+			if (sequenceWithGaps[i].equals(dash)) {
+				gapCount++;
+			}
+		}
+
+		sequenceWithoutGaps = new String[alignedSequenceLength - gapCount];
+		activityIndexArray = new int[alignedSequenceLength];
+		int j = 0;
+		for (int i = 0; i < alignedSequenceLength; i++) {
+			if (sequenceWithGaps[i].equals(dash)) {
+				activityIndexArray[i] = -1;
+			} else {
+				activityIndexArray[i] = j;
+				sequenceWithoutGaps[j] = sequenceWithGaps[i];
+				j++;
+			}
+		}
+	}
+	
+	public void setActivity(String[] sequenceWithGaps) {
+		setActivityInternal(sequenceWithGaps, null);
+	}
+	
+	private void setActivityInternal(String[] newSequenceWithGaps, int[] newActivityIndexArray) {
+		sequenceWithGaps = newSequenceWithGaps;
+
+		if (sequenceWithGaps != null) {
+			/*
+			StringBuilder strBuilder = new StringBuilder();
+			for(int i = 0; i < sequenceWithGaps.length; i++)
+				strBuilder.append(sequenceWithGaps[i]);
+			System.out.println("Set Activity Internal: "+strBuilder.toString());
+			*/
+			int alignedSequenceLength = sequenceWithGaps.length;
+			
+			if (newActivityIndexArray != null) {
+				activityIndexArray = newActivityIndexArray;
+			} else {
+				activityIndexArray = new int[alignedSequenceLength];
+				int j = 0;
+				for (int i = 0; i < alignedSequenceLength; i++) {
+					if (sequenceWithGaps[i].equals(dash)) {
+						activityIndexArray[i] = -1;
+					} else {
+						activityIndexArray[i] = j;
+						j++;
+					}
+				}
+			}
+			
+			int gapCount = 0;
+
+			for (int i = 0; i < alignedSequenceLength; i++) {
+				if (sequenceWithGaps[i].equals(dash)) {
+					gapCount++;
+				}
+			}
+
+			sequenceWithoutGaps = new String[alignedSequenceLength - gapCount];
+			alignmentIndex2ActivityIndex = new int[sequenceWithGaps.length];
+			activityIndex2AlignmentIndex = new int[sequenceWithoutGaps.length];
+
+			int j = 0;
+			for(int i = 0; i < alignedSequenceLength; i++){
+				if(sequenceWithGaps[i].equals(dash)){
+					alignmentIndex2ActivityIndex[i] = -1;
+				}else{
+					sequenceWithoutGaps[j] = sequenceWithGaps[i];
+					activityIndex2AlignmentIndex[j] = i;
+					alignmentIndex2ActivityIndex[i] = j;
+					j++;
+				}
+			}
+		} else {
+			sequenceWithoutGaps = null;
+			alignmentIndex2ActivityIndex = null;
+			activityIndex2AlignmentIndex = null;
+			activityIndexArray = null;
+		}
+
+		for (SequenceListener listener : listenersList) {
+			listener.sequenceActivityChanged(this);
+		}
+	}
+
+	public void deleteActivity(int index) throws Exception {
+		shiftActivity(index + 1, -1, true);
+	}
+	
+	public void shiftActivity(int index, int shift, boolean shiftActivityIndex) throws Exception {
+		if ((index + shift < 0) || (index < 0) || (index > sequenceWithGaps.length)) {
+			throw new Exception("Invalid activity shift specified");
+		}
+		if (shift == 0) {
+			return;
+		}
+
+		String[] newSequenceWithGaps = new String[sequenceWithGaps.length + shift];
+
+		int[] newActivityIndexArray = null;
+		if (shiftActivityIndex && (activityIndexArray != null)) {
+			newActivityIndexArray = new int[activityIndexArray.length + shift];
+		}
+
+		if (shift > 0) {
+			System.arraycopy(sequenceWithGaps, 0, newSequenceWithGaps, 0, index);
+			Arrays.fill(newSequenceWithGaps, index, index + shift, dash);
+
+			if (shiftActivityIndex) {
+				System.arraycopy(activityIndexArray, 0, newActivityIndexArray, 0, index - 1);
+				Arrays.fill(newActivityIndexArray, index, index + shift, -1);
+			}
+
+			if (index < sequenceWithGaps.length) {
+				System.arraycopy(sequenceWithGaps, index, newSequenceWithGaps, index + shift, sequenceWithGaps.length - index);
+				if (shiftActivityIndex) {
+					System.arraycopy(activityIndexArray, index, newActivityIndexArray, index + shift,
+							activityIndexArray.length - index);
+				}
+			}
+		} else {
+			System.arraycopy(sequenceWithGaps, 0, newSequenceWithGaps, 0, index + shift);
+
+			if (shiftActivityIndex) {
+				System.arraycopy(activityIndexArray, 0, newActivityIndexArray, 0, index + shift);
+			}
+
+			if (index < sequenceWithGaps.length) {
+				System.arraycopy(sequenceWithGaps, index, newSequenceWithGaps, index + shift, newSequenceWithGaps.length
+						- (index + shift));
+				if (shiftActivityIndex) {
+					System.arraycopy(activityIndexArray, index, newActivityIndexArray, index + shift,
+							newActivityIndexArray.length - (index + shift));
+				}
+			}
+		}
+
+		// set the new sequence and perform notifications
+		setActivityInternal(newSequenceWithGaps, newActivityIndexArray);
+	}
+	
+	public void addListener(SequenceListener listener) {
+		listenersList.add(listener);
+	}
+
+	public void removeListener(SequenceListener listener) {
+		listenersList.remove(listener);
+	}
+	
+	// set the name of this trace
+	public void setName(String newName) throws Exception {
+		String oldName = this.name;
+
+		if ((newName == oldName) || ((newName != null) && newName.equals(oldName))) {
+			return; // no notification necessary
+		}
+	
+		this.name = newName;
+		int noListeners = listenersList.size();
+		int index = 0;
+
+		try {
+			for( ; index < noListeners; index++){
+				listenersList.get(index).sequenceNameChanged(this, oldName);
+			}
+		} catch (Exception e) {
+			this.name = oldName;
+			//Reset the sequenceNameChanged listeners that was already fired
+			for(int i = index-1;index > 0; index--){
+				listenersList.get(i).sequenceNameChanged(this, newName);
+			}
+			throw e;
+		}
+	}
+	
+	public void setSortValue(int sortValue) {
+		this.sortValue = sortValue;
+	}
+	
+	public String getEncodedActivity(int index) {
+		if(index < sequenceWithGaps.length)
+			return sequenceWithGaps[index];
+		return null;
+	}
+
+	public String getName() {
+		return name;
+	}
+	
+	public int[] getActivityIndexArray() {
+		return activityIndexArray;
+	}
+
+	public int getActivityIndex(int index) {
+		return activityIndexArray[index]+1;
+	}
+
+	public int getNoDuplicates() {
+		return duplicateTraceNameList.size() - 1;
+	}
+	
+	public int getLengthWithGaps() {
+		return sequenceWithGaps.length;
+	}
+
+	public int getLengthWithoutGaps() {
+		return sequenceWithoutGaps.length;
+	}
+	
+	public String[] getSequenceWithGaps() {
+		return sequenceWithGaps;
+	}
+
+	public String[] getSequenceWithoutGaps() {
+		return sequenceWithoutGaps;
+	}
+	
+	public List<String> getDuplicateTraceNameList() {
+		return duplicateTraceNameList;
+	}
+	
+	public int getSortValue() {
+		return sortValue;
+	}
+
+	public String toString() {
+		StringBuilder strBuilder = new StringBuilder();
+		for (String encodedActivity : sequenceWithGaps) {
+			strBuilder.append(encodedActivity);
+		}
+		return strBuilder.toString();
+	}
+	
+	public String getSequenceWithoutGapsString() {
+		StringBuilder strBuilder = new StringBuilder();
+		for (String encodedActivity : sequenceWithoutGaps) {
+			strBuilder.append(encodedActivity);
+		}
+		return strBuilder.toString();
+	}
+	
+	public Color getSequenceNameColor(){
+		return sequenceNameColor;
+	}
+	
+	public void setSequenceNameColor(Color c){
+		this.sequenceNameColor = c;
+		for(SequenceListener listener : listenersList)
+			listener.sequenceNameColorChanged(c);
+	}
+}

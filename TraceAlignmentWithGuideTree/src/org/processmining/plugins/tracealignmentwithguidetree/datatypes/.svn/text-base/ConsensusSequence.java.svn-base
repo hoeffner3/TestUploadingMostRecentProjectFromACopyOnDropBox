@@ -1,0 +1,144 @@
+package org.processmining.plugins.tracealignmentwithguidetree.datatypes;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.processmining.plugins.tracealignmentwithguidetree.visualization.AlignmentFrame;
+
+public class ConsensusSequence extends Sequence {
+	DisplayProperties displayProperties;
+	AlignmentFrame owner;
+	
+	private final Sequence[] sequencesInAlignment;
+	
+	int[][] activityFrequencyInColumnTable; // of dimension no of columns x no distinct activities
+	int[] noActivitiesInColumn;
+	double[] informationInColumnGapsExcluded;
+	double[] informationInColumnGapsIncluded;
+
+	List<String> activityList;
+	int[] predominantActivityIndex;
+
+	// constructor
+	public ConsensusSequence(AlignmentFrame owner, DisplayProperties displayProperties) {
+		this(owner, displayProperties, displayProperties.getAlignment().getAllSequences());
+	}
+
+	protected ConsensusSequence(AlignmentFrame owner, DisplayProperties displayProperties, Sequence[] seqs) {
+		this.owner = owner;
+		this.displayProperties = displayProperties;
+		sequencesInAlignment = seqs;
+		
+		initialize("Consensus", null);
+
+		activityList = new ArrayList<String>();
+		activityList.addAll(owner.getEncodedActivityColorMap().keySet());
+		recalc();
+	}
+	
+	public void recalc() {
+		generateFrequencyTable();
+		generateInformationTable();
+
+		String dash = "-";
+		for (int i = 1; i < owner.getEncodingLength(); i++) {
+			dash += "-";
+		}
+
+		int noColumns = activityFrequencyInColumnTable.length;
+		String[] predominantActivitySeq = new String[noColumns];
+		predominantActivityIndex = new int[noColumns];
+		for (int k = noColumns - 1; k >= 0; k--) {
+			predominantActivitySeq[k] = dash;
+			int maxCount = 0;
+			for (int i = activityFrequencyInColumnTable[k].length - 1; i >= 0; i--) {
+				if (activityFrequencyInColumnTable[k][i] >= maxCount) {
+					maxCount = activityFrequencyInColumnTable[k][i];
+					predominantActivitySeq[k] = activityList.get(i);
+					predominantActivityIndex[k] = i;
+				}
+			}
+		}
+
+		setActivity(predominantActivitySeq);
+	}
+	
+	private void generateFrequencyTable() {
+		activityFrequencyInColumnTable = new int[displayProperties.getAlignment().getMaxLength()][activityList.size()];
+
+		for (int k = activityFrequencyInColumnTable.length - 1; k >= 0; k--) {
+			Arrays.fill(activityFrequencyInColumnTable[k], 0);
+		}
+
+		noActivitiesInColumn = new int[activityFrequencyInColumnTable.length];
+		Arrays.fill(noActivitiesInColumn, 0);
+
+		Sequence seq;
+		for (int i = sequencesInAlignment.length - 1; i >= 0; i--) {
+			seq = sequencesInAlignment[i];
+			for (int k = seq.getLengthWithGaps() - 1; k >= 0; k--) {
+				activityFrequencyInColumnTable[k][activityList.indexOf(seq.getEncodedActivity(k))]++;
+				// TODO something wrong here; at the end of the iterations,
+				// noActivitiesInCol would be just equal to to the no of
+				// Sequences; Ideally should ignore gaps in the column
+				noActivitiesInColumn[k]++;
+			}
+		}
+	}
+	
+	@SuppressWarnings("cast")
+	private void generateInformationTable() {
+		double gapsExcludedProbability;
+		double gapsIncludedProbability;
+		double entropyGapsExcluded = 0;
+		double entropyGapsIncluded = 0;
+		double maxEntropyGapsExcluded = 0;
+		double maxEntropyGapsIncluded = 0;
+		
+		int alignmentLength = displayProperties.getAlignment().getMaxLength();
+
+		informationInColumnGapsExcluded = new double[alignmentLength];
+		informationInColumnGapsIncluded = new double[alignmentLength];
+
+		for (int i = activityFrequencyInColumnTable.length - 1; i >= 0; i--) {
+			entropyGapsExcluded = 0;
+			entropyGapsIncluded = 0;
+			for (int k = activityList.size() - 1; k >= 0; k--) {
+				if ((activityFrequencyInColumnTable[i][k] > 0) && (noActivitiesInColumn[i] > 0)) {
+
+					gapsIncludedProbability = (double) activityFrequencyInColumnTable[i][k]
+							/ (double) noActivitiesInColumn[i];
+					entropyGapsIncluded -= gapsIncludedProbability * log2(gapsIncludedProbability);
+
+					// assumes that dash is the last activity in the list
+					if (k < (activityList.size() - 1)) {
+						gapsExcludedProbability = (double) activityFrequencyInColumnTable[i][k]
+								/ (double) (noActivitiesInColumn[i] - activityFrequencyInColumnTable[i][activityList
+										.size() - 1]);
+						entropyGapsExcluded -= gapsExcludedProbability * log2(gapsExcludedProbability);
+					}
+
+				}
+			}
+
+			maxEntropyGapsExcluded = log2((double) (activityList.size() - 1)); // Fixed an obvious error that was here. Note this formula still treats B and X etc as real amino acids!
+			maxEntropyGapsIncluded = log2((double) (activityList.size())); // Made the same fix here. This is fine now. Much better than before. - SS
+
+			informationInColumnGapsExcluded[i] = 1.0 - entropyGapsExcluded / maxEntropyGapsExcluded;
+			informationInColumnGapsIncluded[i] = 1.0 - entropyGapsIncluded / maxEntropyGapsIncluded;
+		}
+	}
+
+	public double log2(double x) {
+		return Math.log(x) / Math.log(2.0);
+	}
+
+	public double[] getInformationInColumnGapsExcluded() {
+		return informationInColumnGapsExcluded;
+	}
+
+	public double[] getInformationInColumnGapsIncluded() {
+		return informationInColumnGapsIncluded;
+	}
+}

@@ -1,0 +1,9 @@
+K 13
+svn:externals
+V 335
+GuideTreeMiner.jar https://svn.win.tue.nl/repos/prom/Releases/Packages/GuideTreeMiner/GuideTreeMiner.jar
+GuideTreeMiner-lib https://svn.win.tue.nl/repos/prom/Releases/Packages/GuideTreeMiner/lib
+Log.jar https://svn.win.tue.nl/repos/prom/Releases/Packages/Log/Log.jar
+Log-lib https://svn.win.tue.nl/repos/prom/Releases/Packages/Log/lib
+
+END

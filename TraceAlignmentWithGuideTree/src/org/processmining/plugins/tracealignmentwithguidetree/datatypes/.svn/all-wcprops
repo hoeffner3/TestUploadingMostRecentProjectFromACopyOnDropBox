@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/datatypes
+END
+DisplayProperties.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/datatypes/DisplayProperties.java
+END
+ColumnFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/datatypes/ColumnFilter.java
+END
+ColumnSort.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/datatypes/ColumnSort.java
+END
+Sequence.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/datatypes/Sequence.java
+END
+ConsensusSequence.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/datatypes/ConsensusSequence.java
+END
+AlignmentSorter.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/datatypes/AlignmentSorter.java
+END
+Alignment.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/datatypes/Alignment.java
+END

@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization
+END
+AlignmentNamePanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/AlignmentNamePanel.java
+END
+EditSequenceNameDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/EditSequenceNameDialog.java
+END
+ConsensusComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/ConsensusComponent.java
+END
+ColorRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/ColorRenderer.java
+END
+EditSeqAnnBaseDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/EditSeqAnnBaseDialog.java
+END
+RulerAnnotationComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/RulerAnnotationComponent.java
+END
+ActivityCharEncodingTable.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/ActivityCharEncodingTable.java
+END
+RulerComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/RulerComponent.java
+END
+EditActivityAnnotationDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/EditActivityAnnotationDialog.java
+END
+AlignmentTreeVisualization.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/AlignmentTreeVisualization.java
+END
+ColumnFilterDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/ColumnFilterDialog.java
+END
+ColumnSortDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/ColumnSortDialog.java
+END
+ColorEditor.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/ColorEditor.java
+END
+ColumnFilterComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/ColumnFilterComponent.java
+END
+ColorSequenceDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/ColorSequenceDialog.java
+END
+ColumnSortComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/ColumnSortComponent.java
+END
+AlignmentFrame.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/AlignmentFrame.java
+END
+SequenceComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/SequenceComponent.java
+END
+SequenceNameComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/SequenceNameComponent.java
+END
+EditSequenceDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/EditSequenceDialog.java
+END
+AlignmentPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/visualization/AlignmentPanel.java
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/ui
+END
+ScoringMatricesConfigurationStep.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/ui/ScoringMatricesConfigurationStep.java
+END
+myStep.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/ui/myStep.java
+END
+TraceAlignmentWithGuideTreeUI.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/ui/TraceAlignmentWithGuideTreeUI.java
+END
+AlignmentAlgorithmConfigurationStep.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/ui/AlignmentAlgorithmConfigurationStep.java
+END
+RealignmentConfigurationStep.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/ui/RealignmentConfigurationStep.java
+END
+IntroductionStep.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/ui/IntroductionStep.java
+END

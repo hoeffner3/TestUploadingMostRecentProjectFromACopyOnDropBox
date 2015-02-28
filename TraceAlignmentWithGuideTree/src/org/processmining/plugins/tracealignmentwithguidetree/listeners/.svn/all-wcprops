@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/listeners
+END
+ActivityColorListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/listeners/ActivityColorListener.java
+END
+AlignmentListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/listeners/AlignmentListener.java
+END
+DisplayPropertiesListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/listeners/DisplayPropertiesListener.java
+END
+SequenceListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/listeners/SequenceListener.java
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/msa
+END
+MSA.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/msa/MSA.java
+END
+RefineAlignment.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/msa/RefineAlignment.java
+END
+SeqAlignment.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/msa/SeqAlignment.java
+END
+SequenceAlignment.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/msa/SequenceAlignment.java
+END
+GuideTreeAlignment.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/msa/GuideTreeAlignment.java
+END
+SequenceAlignmentLeftIndel.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/repos/prom/!svn/ver/16892/Packages/TraceAlignmentWithGuideTree/Trunk/src/org/processmining/plugins/tracealignmentwithguidetree/msa/SequenceAlignmentLeftIndel.java
+END
